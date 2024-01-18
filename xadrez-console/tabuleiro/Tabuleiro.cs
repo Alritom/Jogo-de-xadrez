@@ -12,5 +12,11 @@
             this.colunas = colunas;
             pecas = new Peca[linhas, colunas];
         }
+
+        //Metodo para permitir que as "pecas" sejam acessadas por outra classe, pois "pecas" é private
+        public Peca peca (int linhas, int colunas)
+        {
+            return pecas[linhas, colunas];
+        }
     }
 }
