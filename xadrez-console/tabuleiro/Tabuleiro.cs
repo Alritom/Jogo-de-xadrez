@@ -19,11 +19,47 @@
             return pecas[linhas, colunas];
         }
 
-        //Colocando peça no tabuleiro
+        //Criando uma sobrecarga do metodo Peca()
+        public Peca peca(Posicao pos)
+        {
+            return pecas[pos.linha, pos.coluna];
+        }
+
+        //Verificando se existe uma peca em uma dada posição
+        public bool existePeca(Posicao pos)
+        {
+            validarPosicao(pos);
+            return peca(pos) != null;
+        }
+
+        //Colocando peça no tabuleiro a Função: colocarPeca() (dá a posição das peças)
         public void colocarPeca(Peca p, Posicao pos)
         {
+            if (existePeca(pos))
+            {
+                throw new TabuleiroException("Já existe uma peça nesta posição");
+            }
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
+        }
+
+        //Funcao para testar se a posicao é válida
+        public bool posicaoValida(Posicao pos)
+        {
+            if(pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna  >= colunas)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Criando uma exceção para erro
+        public void validarPosicao(Posicao pos)
+        {
+            if(!posicaoValida(pos)) //"!" quer dizer não, se a posição não for válida
+            {
+                throw new TabuleiroException("Posição inválida");
+            }
         }
     }
 }
