@@ -17,8 +17,18 @@ namespace xadrez_console
                     Tela.imprimirTabuleiro(partida.tab);
 
                     Console.WriteLine();
+
+                    //Metodo que irá ler a posição das peças no xadrez 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    //Colorindo as direcoes possiveis
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                    Console.WriteLine();
                     Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
