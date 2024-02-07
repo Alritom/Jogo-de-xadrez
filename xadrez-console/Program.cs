@@ -16,11 +16,7 @@ namespace xadrez_console
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-
-                        Console.WriteLine();
-                        Console.WriteLine("Turno " + partida.turno);
-                        Console.WriteLine("Aguardando jogada " + partida.jogadorAtual);
+                        Tela.imprimirPartida(partida);
                         Console.WriteLine();
 
                         //Metodo que irá ler a posição das peças no xadrez 
@@ -46,9 +42,7 @@ namespace xadrez_console
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
-                }
-                                             
-
+                }                                         
             }
             catch (TabuleiroException e)
             {
