@@ -14,10 +14,18 @@ namespace xadrez_console
             imprimirPecasCapituradas(partida);
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
-            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-            if (partida.xeque)
+            if (!partida.terminada)
             {
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.xeque)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
             }
         }
 
@@ -53,7 +61,7 @@ namespace xadrez_console
                 Console.Write(8 - i + " ");              //imprimindo a posição das LINHAS DO XADREZ
                 for (int j = 0; j < tab.colunas; j++)
                 {
-                    imprimirPeca(tab.peca(i, j));                 
+                    imprimirPeca(tab.peca(i, j));
                 }
                 Console.WriteLine();
             }
